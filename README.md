@@ -93,9 +93,9 @@ The Power BI report uses the `Bloom` theme and contains three report pages:
 | Risk Analysis | Segment and trend analysis across income group, loan size, interest bucket, and issue date. |
 | Income Drill View | Drill-through/navigation page for income-focused analysis. |
 
-![Power BI Dashboard Structure](assets/Power BI dashboard.png)
+![Power BI Dashboard Structure](assets/power-bi-dashboard.png)
 
-![Power BI Dashboard Structure]](assets/PowerBI dashboard.png)
+![Power BI Dashboard Structure](assets/power-bi-dashboards.png)
 
 ## Key Visuals
 
@@ -192,7 +192,6 @@ USE credit_risk;
 - Power BI dashboard pages are structured for executive monitoring first, followed by deeper segment-level risk analysis.
 - The project connects Python preprocessing, SQL analytics, and BI reporting into a complete credit-risk analytics workflow.
 
-## Resume Highlight
-
-Built an end-to-end credit risk analytics dashboard using Python, MySQL, SQL, and Power BI on 396K+ Lending Club loan records. Cleaned and engineered risk features, developed SQL queries for portfolio exposure, default, recovery, and segment analysis, and designed an interactive Power BI dashboard for collections performance and credit-risk monitoring.
+# Author
+### Impana R
 
