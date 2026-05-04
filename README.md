@@ -93,9 +93,11 @@ The Power BI report uses the `Bloom` theme and contains three report pages:
 | Risk Analysis | Segment and trend analysis across income group, loan size, interest bucket, and issue date. |
 | Income Drill View | Drill-through/navigation page for income-focused analysis. |
 
-![Power BI Dashboard Structure](assets/power-bi-dashboard.png)
+![Power BI Dashboard Structure](assets/power-bi-dashboard-structure.png)
 
 ![Power BI Dashboard Structure](assets/power-bi-dashboards.png)
+
+![Power BI Dashboard Structure](assets/power-bi.png)
 
 ## Key Visuals
 
