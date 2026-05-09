@@ -282,20 +282,23 @@ Top loan purposes include debt consolidation, credit card refinancing, home impr
 ## Project Structure
 
 ```text
-.
-|-- Data_preprocessing.ipynb
-|-- SQL.sql
-|-- Dashboard_project.pbix
-|-- lending_club_loan_two.csv
-|-- cleaned_loans.csv
-|-- README.md
-`-- assets/
-    |-- portfolio-kpi-snapshot.png
-    |-- power-bi-dashboard-structure.png
-    |-- loan-status-distribution.png
-    |-- default-rate-income-loan-size.png
-    |-- default-rate-interest-bucket.png
-    `-- loan-volume-default-trend.png
+├── SQL
+│   └── SQL.sql
+├── assets
+│   ├── Power-bi-dashboard.png
+│   ├── default-rate-income-loan-size.png
+│   ├── default-rate-interest-bucket.png
+│   ├── loan-status-distribution.png
+│   ├── loan-volume-default-trend.png
+│   ├── portfolio-kpi-snapshot.png
+│   ├── power-bi-dashboard (2).png
+│   ├── power-bi-dashboard(2).png
+│   ├── power-bi-dashboard-structure.png
+│   └── power-bi.png
+├── dashboard
+├── notebooks
+│   └── Data_preprocessing.ipynb
+└── README.md
 ```
 
 ## How to Run
