@@ -49,6 +49,19 @@ Required files:
 
 To run the project, download the Lending Club loan dataset separately from kaggle and place it in the project root folder before running `Data_preprocessing.ipynb`.
 
+## Power BI Report Access
+
+The Power BI report file is not included in this repository because it exceeds GitHub file size limits.
+
+Required file:
+- `Dashboard_project.pbix`
+
+Download the Power BI report from the link below:
+
+[Download Power BI Report](https://drive.google.com/drive/folders/1c1hx4PUTb1ob4XNAkP0iGoBcoi1GaIL_?usp=sharing)
+
+After downloading, open `Dashboard_project.pbix` in Power BI Desktop and refresh the data connection.
+
 ## Tools and Technologies
 
 - Python
