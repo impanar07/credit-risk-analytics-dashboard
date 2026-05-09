@@ -1,22 +1,34 @@
 # Credit Risk Collections Analytics Dashboard
 
-An end-to-end data analytics project that cleans Lending Club loan data, engineers portfolio risk indicators, analyzes credit performance with SQL, and presents executive insights through a Power BI dashboard. The project focuses on default risk, repayment behavior, recovery performance, exposure monitoring, and borrower segmentation.
+A professional end-to-end data analytics project that combines Python data preprocessing, SQL-based credit-risk analysis, and an interactive Power BI dashboard. The project analyzes Lending Club loan data to monitor portfolio health, identify high-risk borrower segments, and support data-driven collections decisions.
 
 ![Credit Risk Portfolio KPI Snapshot](assets/portfolio-kpi-snapshot.png)
 
 ## Project Overview
 
-Financial institutions need clear visibility into delinquency, default exposure, and recovery performance to improve collections strategies and reduce credit losses. This project transforms raw loan data into an analytics-ready dataset, loads it into MySQL, performs SQL-based risk analysis, and visualizes the results in Power BI.
+Financial institutions need reliable visibility into delinquency, default exposure, recovery performance, and borrower risk patterns. This project transforms raw loan data into a cleaned analytics dataset, loads it into a MySQL database, runs SQL analysis for portfolio and collections metrics, and presents the results in Power BI.
 
-The final dashboard helps stakeholders monitor portfolio health, identify high-risk borrower segments, compare default behavior across loan and income categories, and evaluate risk trends over time.
+The final dashboard helps stakeholders answer key questions:
 
-## Business Objectives
+- What is the overall loan portfolio exposure?
+- How many loans are current, late, charged off, or recovered?
+- Which borrower segments show higher default risk?
+- How do income group, loan size, and interest rate relate to default behavior?
+- Where should collections teams focus intervention efforts?
 
-- Track total loan volume, portfolio exposure, average loan value, default rate, late rate, and recovery rate.
-- Identify borrower segments with elevated default risk.
-- Compare default behavior across income groups, loan sizes, and interest-rate buckets.
-- Monitor loan status distribution and charge-off exposure.
-- Support data-driven collections and credit-risk decision-making through an interactive Power BI dashboard.
+## Business Problem
+
+Loan portfolios can lose value when delinquency and charge-off patterns are not monitored early enough. Collections teams need a clear view of repayment behavior, default trends, and recovery performance to prioritize accounts and reduce financial losses.
+
+This project solves that problem by building a complete analytics workflow that moves from raw data preparation to SQL analysis and Power BI reporting.
+
+## Files Combined in This Project
+
+| File | Role in Project |
+| --- | --- |
+| `Data_preprocessing.ipynb` | Cleans the raw Lending Club dataset, handles missing values, creates risk flags and borrower segments, exports `cleaned_loans.csv`, and loads the table into MySQL. |
+| `SQL.sql` | Runs portfolio, default, recovery, exposure, and segmentation analysis on the cleaned `loans` table. |
+| `Dashboard_project.pbix` | Power BI dashboard used to visualize KPIs, risk patterns, borrower segmentation, and collections performance. |
 
 ## Dataset
 
@@ -24,104 +36,126 @@ The project uses Lending Club loan data from `lending_club_loan_two.csv`.
 
 | Attribute | Value |
 | --- | ---: |
-| Raw rows | 396,030 |
+| Raw records | 396,030 |
 | Raw columns | 27 |
-| Cleaned rows | 396,030 |
+| Cleaned records | 396,030 |
 | Cleaned columns | 35 |
+| Database | `credit_risk` |
 | Main table | `loans` |
-| Dashboard file | `Dashboard_project.pbix` |
+| Dashboard | `Dashboard_project.pbix` |
 
-Key fields include loan amount, interest rate, installment, grade, sub-grade, employment details, home ownership, annual income, loan status, purpose, debt-to-income ratio, revolving utilization, credit history, and public record indicators.
+## Tools and Technologies
 
-## End-to-End Workflow
+- Python
+- Jupyter Notebook
+- Pandas
+- NumPy
+- Matplotlib
+- SQLAlchemy
+- PyMySQL
+- MySQL
+- Power BI
+
+## Project Workflow
 
 ```text
 Raw Lending Club CSV
         ->
 Python / Jupyter preprocessing
         ->
-Feature engineering and cleaned CSV export
+Cleaned loan dataset
         ->
-MySQL table: credit_risk.loans
+MySQL database table: credit_risk.loans
         ->
-SQL portfolio and segment analysis
+SQL portfolio and risk analysis
         ->
-Power BI dashboard and executive insights
+Power BI dashboard
 ```
 
 ## Data Preprocessing
 
-The preprocessing notebook performs the following steps:
+The preprocessing notebook prepares the raw dataset for analysis and dashboarding.
 
-- Loads `lending_club_loan_two.csv` with Pandas.
-- Reviews dataset shape, columns, data types, missing values, mean, and median statistics.
-- Fills missing numeric values using median imputation for `pub_rec_bankruptcies`, `mort_acc`, and `revol_util`.
-- Fills missing categorical values using mode imputation for `emp_title`, `emp_length`, and `title`.
-- Removes duplicates and validates that no duplicate records remain.
-- Cleans `int_rate` and standardizes `loan_status` text.
-- Creates analytical flags: `is_default`, `is_late`, `is_recovered`, and `high_risk_flag`.
-- Creates borrower and loan segments: `income_group` and `loan_size`.
-- Extracts `issue_year` and `issue_month` from issue date.
-- Exports the cleaned dataset as `cleaned_loans.csv`.
-- Loads cleaned data into MySQL table `credit_risk.loans` using SQLAlchemy and PyMySQL.
+Key steps include:
+
+- Load `lending_club_loan_two.csv` using Pandas.
+- Inspect shape, columns, data types, missing values, mean, and median statistics.
+- Fill missing numeric values with median values for `pub_rec_bankruptcies`, `mort_acc`, and `revol_util`.
+- Fill missing categorical values with mode values for `emp_title`, `emp_length`, and `title`.
+- Remove duplicate rows.
+- Clean and convert `int_rate` into numeric format.
+- Standardize `loan_status` text values.
+- Engineer analytical flags:
+  - `is_default`
+  - `is_late`
+  - `is_recovered`
+  - `high_risk_flag`
+- Create borrower and loan segments:
+  - `income_group`
+  - `loan_size`
+- Extract issue-date features:
+  - `issue_year`
+  - `issue_month`
+- Export the final cleaned dataset as `cleaned_loans.csv`.
+- Load the cleaned data into MySQL table `credit_risk.loans`.
 
 ## SQL Analysis
 
-The SQL script analyzes portfolio and collections performance using grouped aggregations, conditional flags, and risk segmentation.
+The SQL script calculates portfolio-level and segment-level risk metrics.
 
-Main analysis areas:
+Analysis areas include:
 
-- Portfolio KPIs: total loans, total exposure, average loan amount, average interest rate, default rate, late rate, and recovery rate.
-- Loan status distribution and repayment outcomes.
+- Total loans, total exposure, average loan amount, and average interest rate.
+- Default rate, late rate, and recovery rate.
+- Loan status distribution.
 - Current, late, and default loan counts.
 - Default behavior by late-payment status.
-- Risk by income group and loan size.
+- Default and recovery performance by income group.
+- Default and late-payment performance by loan size.
 - Default rate by interest-rate bucket.
 - Monthly and yearly default trends.
-- Recovery rate by income group.
-- Combined segment analysis across income, loan size, and interest bucket.
+- Combined segmentation by income group, loan size, and interest bucket.
 - Default exposure as a percentage of total portfolio exposure.
-- High-risk flag performance.
+- High-risk loan flag analysis.
 
-## Dashboard Overview
+## Power BI Dashboard
 
-The Power BI report uses the `Bloom` theme and contains three report pages:
+The Power BI dashboard turns the cleaned data and SQL insights into an interactive business reporting layer.
 
-| Page | Purpose |
-| --- | --- |
-| Portfolio overview | Executive KPI view with exposure, default, recovery, loan status, and slicers. |
-| Risk Analysis | Segment and trend analysis across income group, loan size, interest bucket, and issue date. |
-| Income Drill View | Drill-through/navigation page for income-focused analysis. |
+Dashboard focus areas:
+
+- Executive portfolio KPI view.
+- Loan status and repayment outcome monitoring.
+- Default-risk segmentation by borrower income and loan size.
+- Interest-rate bucket analysis.
+- Time-based loan volume and default trend tracking.
+- Drill-down views for deeper borrower segment analysis.
 
 ![Power BI Dashboard Structure](assets/power-bi-dashboard-structure.png)
-
-![Power BI Dashboard Structure](assets/power-bi-dashboards.png)
-
-![Power BI Dashboard Structure](assets/power-bi.png)
 
 ## Key Visuals
 
 ### Loan Status Distribution
 
-Shows the split between fully paid and charged-off loans, giving a clear view of portfolio repayment outcomes.
+Shows the split of repayment outcomes across the portfolio.
 
 ![Loan Status Distribution](assets/loan-status-distribution.png)
 
 ### Default Rate by Income Group and Loan Size
 
-Highlights borrower and loan-size combinations with higher default rates, helping prioritize collections and risk monitoring.
+Highlights borrower and loan-size segments with higher credit risk.
 
 ![Default Rate by Income and Loan Size](assets/default-rate-income-loan-size.png)
 
 ### Default Rate by Interest Bucket
 
-Shows how default rates change as interest-rate buckets increase, supporting credit-pricing and risk analysis.
+Shows how default rates vary across interest-rate ranges.
 
 ![Default Rate by Interest Bucket](assets/default-rate-interest-bucket.png)
 
 ### Loan Volume and Default Trend
 
-Compares yearly loan volume with default rate to understand portfolio growth and risk movement over time.
+Compares loan volume and default rate over time.
 
 ![Loan Volume and Default Trend](assets/loan-volume-default-trend.png)
 
@@ -138,21 +172,35 @@ Compares yearly loan volume with default rate to understand portfolio growth and
 | Default exposure | $1,174,905,175.00 |
 | Default exposure percentage | 21.02% |
 
-## Tools and Technologies
+## Key Insights
 
-- Python
-- Jupyter Notebook
-- Pandas
-- NumPy
-- Matplotlib
-- MySQL
-- SQLAlchemy
-- PyMySQL
-- Power BI
+- The portfolio contains more than 396K loan records and over $5.5B in total loan exposure.
+- Charged-off loans account for a significant share of portfolio risk.
+- Default rates vary across income groups, loan sizes, and interest-rate buckets.
+- Interest-rate buckets provide a useful view for understanding pricing-related risk.
+- High-risk flags help separate loans requiring closer collections monitoring.
+- The dashboard gives stakeholders a single view of exposure, repayment outcomes, default behavior, and recovery performance.
 
+## Project Structure
 
+```text
+.
+|-- Data_preprocessing.ipynb
+|-- SQL.sql
+|-- Dashboard_project.pbix
+|-- lending_club_loan_two.csv
+|-- cleaned_loans.csv
+|-- README.md
+`-- assets/
+    |-- portfolio-kpi-snapshot.png
+    |-- power-bi-dashboard-structure.png
+    |-- loan-status-distribution.png
+    |-- default-rate-income-loan-size.png
+    |-- default-rate-interest-bucket.png
+    `-- loan-volume-default-trend.png
+```
 
-## How to Run
+## How to Run the Project
 
 1. Clone the repository.
 
@@ -167,33 +215,37 @@ cd <your-repository>
 pip install pandas numpy matplotlib sqlalchemy pymysql jupyter
 ```
 
-3. Run the preprocessing notebook.
-
-```bash
-jupyter notebook Data_preprocessing.ipynb
-```
-
-4. Create or select the MySQL database.
+3. Create the MySQL database.
 
 ```sql
 CREATE DATABASE credit_risk;
 USE credit_risk;
 ```
 
-5. Load `cleaned_loans.csv` into MySQL using the notebook upload step.
+4. Run the preprocessing notebook.
 
-6. Run `SQL.sql` for portfolio and risk analysis.
+```bash
+jupyter notebook Data_preprocessing.ipynb
+```
+
+5. Export `cleaned_loans.csv` and load it into the `credit_risk.loans` table using the notebook upload step.
+
+6. Run the SQL analysis script.
+
+```sql
+SOURCE SQL.sql;
+```
 
 7. Open `Dashboard_project.pbix` in Power BI Desktop and refresh the data connection.
 
-## Key Insights
+## Skills Demonstrated
 
-- Charged-off loans represent the primary credit-loss population in the dataset.
-- Default behavior varies meaningfully across income groups, loan sizes, and interest-rate buckets.
-- Interest-rate buckets provide a useful lens for identifying higher-risk lending segments.
-- Power BI dashboard pages are structured for executive monitoring first, followed by deeper segment-level risk analysis.
-- The project connects Python preprocessing, SQL analytics, and BI reporting into a complete credit-risk analytics workflow.
+- Data cleaning and preprocessing with Python.
+- Missing-value treatment and duplicate handling.
+- Feature engineering for credit-risk analysis.
+- SQL aggregation, segmentation, and portfolio metric analysis.
+- Power BI dashboard design and business reporting.
+- End-to-end analytics workflow development.
 
 # Author
-### Impana R
-
+## Impana R
