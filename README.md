@@ -39,6 +39,16 @@ The source dataset is `lending_club_loan_two.csv`, and the processed output is `
 
 Key fields include loan amount, term, interest rate, installment, grade, sub-grade, employment details, home ownership, annual income, verification status, issue date, loan status, purpose, debt-to-income ratio, revolving balance, revolving utilization, mortgage accounts, bankruptcy records, and engineered risk fields.
 
+## Dataset Access
+
+The dataset files are not included in this repository because of GitHub file size limits.
+
+Required files:
+- `lending_club_loan_two.csv`
+- `cleaned_loans.csv`
+
+To run the project, download the Lending Club loan dataset separately from kaggle and place it in the project root folder before running `Data_preprocessing.ipynb`.
+
 ## Tools and Technologies
 
 - Python
