@@ -339,6 +339,5 @@ SOURCE SQL.sql;
 - Power BI report design using KPIs, charts, matrices, slicers, and page navigation.
 - End-to-end analytics workflow development.
 
-## Resume Summary
-
-Built an end-to-end credit risk analytics dashboard using Python, MySQL, SQL, and Power BI on 396K+ Lending Club loan records. Cleaned and engineered risk features, loaded the dataset into MySQL, developed SQL queries for portfolio exposure, default, recovery, and segmentation analysis, and designed a four-page interactive Power BI report for credit-risk and collections monitoring.
+# Author 
+## Impana R
