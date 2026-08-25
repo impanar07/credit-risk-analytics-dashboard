@@ -290,7 +290,7 @@ images/risk_dashboard.png
 
 # 👨‍💻 Author
 
-**Bindu Prakash**
+**Impana R**
 
 **Aspiring Data Analyst | Python | SQL | Power BI | Excel**
 
